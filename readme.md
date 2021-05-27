@@ -16,6 +16,9 @@ Sebelum itu agar script ini dapat digunakan, kalian jangan lupa untuk memasang:
 
 Jika sudah kalian dapat memulai untuk mengikuti langkah-langkah berikut ini:
 
+## Demo
+https://www.andsp.id/ipv4calculator/
+
 ## IPv4 Kalkulator
 
 ### Penggunaan Dasar
