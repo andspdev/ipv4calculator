@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IPv4 Subnet Calculator | Andsp.ID</title>
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
+    </head>
+
+    <body>
+
+        <main class="main-content">
+            
+            <div class="title">
+                <h1>IPv4 Subnet Calculator</h1>
+
+                <ul class="menu">
+                    <li><span class="active">IPv4 Calculator</span></li>
+                    <li><a href="subnetmask.html">Mask Converter</a></li>
+                </ul>
+            </div>
+
+            <form method="post" class="formHitungIP">
+                <input type="text" size="2" placeholder="192.168.32.64/26" class="ipaddress" />
+                <button class="hitung">Hitung!</button>
+            </form>
+            <br/><br/>
+
+            <div class="hasilHitung"></div>
+
+            <div class="copyright">
+                Dibuat dengan ❤️ oleh <a href="https://www.andsp.id" target="_blank">Andreas Pandu Pamungkas</a>
+            </div>
+        </main>
+
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/ipv4calculator.min.js"></script>
+        <script>
+            $(function() {
+                const formSubmit    = $('.formHitungIP');
+                const hasilhitung   = $('.hasilHitung');
+
+                formSubmit.submit(function(e) {
+                    e.preventDefault();
+
+                    const ipaddress = $('.ipaddress').val();
+                    const regexIP   = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/(3[0-1]|2[0-9]|1[0-9]|[4-9]))\,?\b){1,}/g;
+
+                    hasilhitung.fadeIn();
+                    hasilhitung.html('Sedang menghitung...');
+                    
+                    setTimeout(() => {
+                        if (regexIP.test(ipaddress))
+                        {
+                            hasilhitung.subnettingCalculator({
+                                address: ipaddress
+                            }); 
+                        }
+                        else hasilhitung.html('<div class="alert alert-danger">Silahkan gunakan format IPv4 beserta CIDR dengan benar. Seperti: <b>192.168.32.64/24</b></div>');
+                    }, 900);
+                });
+            });
+        </script>
+    </body>
+</html>

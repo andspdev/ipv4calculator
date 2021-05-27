@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mask Converter | Andsp.ID</title>
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
+    </head>
+
+    <body>
+
+        <main class="main-content">
+            
+            <div class="title">
+                <h1>Mask Converter</h1>
+                <ul class="menu">
+                    <li><a href="index.html">IPv4 Calculator</a></li>
+                    <li><span class="active">Mask Converter</span></li>
+                </ul>
+            </div>
+
+            <form method="post" class="formHitungSubnetmask">
+                <b>Subnet Mask</b>
+                <input type="text" size="2" placeholder="255.255.255.128" class="subnetmask" />
+                <button class="hitung">Hitung!</button>
+            </form>
+            <br/><br/>
+
+            <div class="hasilHitung"></div>
+
+            <div class="copyright">
+                Dibuat dengan ❤️ oleh <a href="https://www.andsp.id" target="_blank">Andreas Pandu Pamungkas</a>
+            </div>
+        </main>
+
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/ipv4calculator.min.js"></script>
+        <script>
+            $(function() {
+                const formSubmit    = $('.formHitungSubnetmask');
+                const hasilhitung   = $('.hasilHitung');
+
+                formSubmit.submit(function(e) {
+                    e.preventDefault();
+
+                    const subnetmask = $('.subnetmask').val();
+                    const regexIP   = /^(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))$/;
+
+                    hasilhitung.fadeIn();
+                    hasilhitung.html('Sedang menghitung...');
+                    
+                    setTimeout(() => {
+                        if (regexIP.test(subnetmask))
+                        {
+                            hasilhitung.subnettingCalculator({
+                                maskCalculator: subnetmask
+                            }); 
+                        }
+                        else hasilhitung.html('<div class="alert alert-danger">Silahkan gunakan format Subnet Mask dengan benar. Seperti: <b>255.255.255.128</b></div>');
+                    }, 900);
+                });
+            });
+        </script>
+    </body>
+</html>
