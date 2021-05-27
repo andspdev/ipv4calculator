@@ -19,7 +19,7 @@ Jika sudah kalian dapat memulai untuk mengikuti langkah-langkah berikut ini:
 ## Demo
 https://andspdev.github.io/ipv4calculator/
 
-## IPv4 Kalkulator
+## IPv4 Calculator
 
 ### Penggunaan Dasar
 
