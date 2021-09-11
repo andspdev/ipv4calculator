@@ -1,7 +1,5 @@
 # IPv4 Calculator & Mask Converter
 
-Copyright &copy; 2021 Andreas Pandu Pamungkas
-
 Dengan adanya script ini dapat mempermudah kalian semua menggunakannya untuk menghitung IPv4 dan mengetahui Subnet Mask.
 
 
